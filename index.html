@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOCTUS-06 Projesi - Ali Berkant Eker</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 30px auto; 
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 { 
+            color: #1e3a5f; 
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        strong {
+            color: #1e3a5f;
+        }
+
+        /* GALERİ İÇİN YENİ CSS STİLLERİ */
+        .gallery {
+            display: grid; /* Izgara sistemi kullan */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Resimleri otomatik olarak yan yana sığdır */
+            gap: 15px; /* Resimler arası boşluk */
+            margin-top: 20px;
+        }
+        .gallery-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden; /* Taşmaları engelle */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background-color: #fff;
+            display: flex; /* Resmin ortalanması için */
+            justify-content: center; /* Yatay ortala */
+            align-items: center; /* Dikey ortala */
+            flex-direction: column; /* Başlık da eklenecekse */
+        }
+        .gallery-item img {
+            width: 100%; /* Kutuya tam sığdır */
+            height: 180px; /* Sabit yükseklik ver */
+            object-fit: cover; /* Resmi keserek doldur */
+            display: block; /* Altındaki boşluğu kaldır */
+            border-radius: 7px 7px 0 0; /* Sadece üst köşeleri yuvarla */
+        }
+        .image-caption {
+            padding: 10px;
+            font-size: 0.9em;
+            color: #555;
+            text-align: center;
+            background-color: #f9f9f9;
+            width: 100%;
+            box-sizing: border-box; /* Padding'i kutu içine dahil et */
+        }
+        
+        /* YETENEKLER LİSTESİ İÇİN STİLLER */
+        .capabilities-list {
+            list-style-type: none; /* Liste başındaki noktaları kaldırır */
+            padding-left: 0; /* Sol taraftaki varsayılan boşluğu kaldırır */
+        }
+        .capabilities-list li {
+            margin-bottom: 20px; /* Her madde arasına 20px boşluk ekler */
+            padding-left: 20px; /* Metnin biraz içeriden başlaması için */
+            border-left: 4px solid #1e3a5f; /* Sol tarafa şık bir çizgi ekler */
+            line-height: 1.7; /* Satır yüksekliğini artırarak okunabilirliği kolaylaştırır */
+        }
+        .capabilities-list li strong {
+            display: block; /* Başlığın kendi satırında gibi davranmasını sağlar */
+            margin-bottom: 5px; /* Başlık ile metin arasına küçük bir boşluk ekler */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NOCTUS-06 Küp Uydu Projesi</h1>
+        <p><em>Geliştiren: Ali Berkant Eker</em></p>
+        
+        <h2>Projenin Amacı</h2>
+        <p>
+            NOCTUS-06, 1U formatında tasarlanmış, atmosferik verileri (sıcaklık, basınç, nem, CO2, metan vb.) toplayan ve bu verileri yer istasyonuna anlık olarak RF telemetri ile ileten bir yer tabanlı küp uydu prototipidir. Bu proje, düşük maliyetli uydu sistemleri ve veri toplama platformları geliştirme yeteneklerini sergilemek amacıyla yapılmıştır.
+        </p>
+
+        <h2>Teknik Özellikler</h2>
+        <ul>
+            <li><strong>Sensörler:</strong> BME280 (Sıcaklık, Basınç, Nem), MH-Z19 (CO2), MQ-4 (Metan), MQ-9 (Propan), MPU6050 (3 Eksen Gyro & İvmeölçer)</li>
+            <li><strong>Konumlandırma:</strong> GY-NEO6MV2 GPS Modülü</li>
+            <li><strong>İşlemci:</strong> Arduino Mega 2560 Pro Mini</li>
+            <li><strong>Haberleşme:</strong> RF900 Ultra Long Range Radio Modem (Telemetri)</li>
+            <li><strong>Güç:</strong> 2x 18650 Li-ion Pil (7.4V), 5V DC-DC Converter</li>
+        </ul>
+
+        <h2>Platformun Temel Yetenekleri</h2>
+        <ul class="capabilities-list">
+            <li>
+                <strong>🛰️ Küp Uydu (NOCTUS-06):</strong> Tasarımını ve 3D modellemesini SolidWorks kullanarak bizzat tamamladığım 1U'luk gövde içerisinde; sıcaklık, nem, basınç, karbondioksit (CO2), çeşitli gazlar (metan & propan), 3 eksenli ivme & jiroskop, GPS konumu ve sistem akımı gibi kritik verileri saniyede bir hassas bir şekilde ölçmektedir.
+            </li>
+            <li>
+                <strong>📡 Gerçek Zamanlı Veri Akışı:</strong> Uydudan toplanan tüm telemetri verileri, JSON formatında paketlenerek RF telemetri modülleri aracılığıyla anlık olarak yer istasyonuna iletilmektedir.
+            </li>
+            <li>
+                <strong>🖥️ Masaüstü Kullanıcı Arayüzü (GUI):</strong> Electron.js ve Flask (Python) kullanarak geliştirdiğim masaüstü GUI uygulaması, gelen canlı verileri modern ve kullanıcı dostu bir arayüzde görselleştiriyor, harita üzerinde uydunun konumunu gösteriyor ve sensör verilerini anlık grafiklerle sunuyor.
+            </li>
+            <li>
+                <strong>💾 Çift Katmanlı Veri Depolama:</strong> Güvenilirlik ve veri bütünlüğü için çift katmanlı bir depolama mimarisi kurdum. Tüm telemetri verileri hem uydu üzerindeki SD karta CSV formatında kaydediliyor hem de eş zamanlı olarak Firebase üzerinde bulutta depolanıyor.
+            </li>
+        </ul>
+
+        <h2>Proje Görselleri</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/Ncts1.jpg" alt="NOCTUS-06 Uydusu 5">
+                <div class="image-caption">Prototip Yapısı</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Ncts2.jpg" alt="NOCTUS-06 Uydusu 2">
+                <div class="image-caption">Yer İstasyon Görünümü</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Ncts3.jpg" alt="NOCTUS-06 Uydusu 3">
+                <div class="image-caption">Map Görüntüsü</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Ncts4.jpg" alt="NOCTUS-06 Uydusu 4">
+                <div class="image-caption">Veriler Grafik Üzerinde Gösterimi </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/Ncts5.jpg" alt="NOCTUS-06 Uydusu 1">
+                <div class="image-caption">Noctus-06 Ve Yer İstasyonu Telemetrisi (RF900)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/firebase_data.png" alt="Firebase Veri Depolama">
+                <div class="image-caption">Firebase Veri Depolama</div>
+            </div>
+        </div>
+
+        <h2>Sonuç ve Öğrenimler</h2>
+        <p>
+            Bu proje, gömülü sistemler programlama, sensör entegrasyonu, güç yönetimi ve kablosuz haberleşme konularında pratik deneyim kazandırmıştır. Verilerin JSON formatında anlık olarak Flask ve Electron tabanlı bir arayüze aktarılması, tam bir sistem entegrasyonu başarısını göstermektedir.
+        </p>
+    </div>
+</body>
+</html>
